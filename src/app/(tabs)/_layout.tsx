@@ -72,6 +72,19 @@ export default function TabsLayout() {
     ),
   }}
 />
+<Tabs.Screen
+  name="jobs"
+  options={{
+    href: null,
+  }}
+/>
+
+<Tabs.Screen
+  name="admissions"
+  options={{
+    href: null,
+  }}
+/>
     </Tabs>
   );
 }

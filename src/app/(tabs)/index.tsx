@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useEffect, useState } from "react";
 import { ActivityIndicator, FlatList, Image, Pressable, RefreshControl, ScrollView, StatusBar, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import AppDrawer from "../../components/AppDrawer";
 import NoInternet from "../../components/NoInternet";
 import SkeletonCard from "../../components/SkeletonCard";
 import { COLORS } from "../../theme";
@@ -433,6 +434,7 @@ export default function HomeScreen() {
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [posts, setPosts] = useState([]);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -621,19 +623,30 @@ const cities = [
   // ===== GRID HOME (cards) =====
   if (!showingPosts) {
     return (
-      <SafeAreaView style={styles.container} edges={["bottom"]}>
-        <StatusBar barStyle="light-content" backgroundColor={COLORS.primaryDark} />
-        <View style={styles.header}>
-<View style={styles.headerTextWrap}>
-  <Text style={styles.headerTitle}>Rahnuma</Text>
-  <Text style={styles.headerSub}>Your Guide to Education & Careers</Text>
-</View>
+ <SafeAreaView style={styles.container} edges={["bottom"]}>
+  <StatusBar
+    barStyle="light-content"
+    backgroundColor={COLORS.primaryDark}
+  />
+
+  <AppDrawer
+    visible={drawerOpen}
+    onClose={() => setDrawerOpen(false)}
+  />
+
+  <View style={styles.header}>
+    <View style={styles.headerTextWrap}>
+      <Text style={styles.headerTitle}>Rahnuma</Text>
+      <Text style={styles.headerSub}>
+        Your Guide to Education & Careers
+      </Text>
+    </View>
 <Pressable
-  onPress={() => router.push("/about")}
+  onPress={() => setDrawerOpen(true)}
   style={styles.infoBtn}
   hitSlop={10}
 >
-  <Text style={styles.infoIcon}>⚙️</Text>
+  <Text style={styles.infoIcon}>☰</Text>
 </Pressable>
 
 </View>
@@ -641,55 +654,41 @@ const cities = [
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 120 }}
         >
-   <View style={styles.heroBanner}>
-  <View style={styles.heroContent}>
-    <View style={{ flex: 1 }}>
-      <Text style={styles.heroSmall}>
-        Your Guide to
+<View style={styles.heroBanner}>
+ <View style={[styles.heroContent, { justifyContent: "center" }]}>
+  <View style={{ flex: 1, alignItems: "center" }}>
+
+      <View style={styles.heroBadge}>
+        <Text style={styles.heroBadgeText}>🎓 Pakistan's Education Guide</Text>
+      </View>
+
+      <Text style={styles.heroTitle}>
+        Welcome to{"\n"}
+        <Text style={styles.heroHighlight}>Rahnuma</Text>
       </Text>
 
-      <Text style={styles.heroBig}>
-        Education & Careers
+      <Text style={styles.heroSub}>
+        Admissions • Jobs • Results • Scholarships
       </Text>
 
-      <Text style={styles.heroDesc}>
+      <Text style={styles.heroTagline}>
         We Guide | You Grow
       </Text>
 
-      <Text style={styles.heroDesc}>
-        Together We Succeed
-      </Text>
+      <Pressable
+        style={styles.heroButton}
+        onPress={() => router.push("/ai")}
+      >
+        <Text style={styles.heroButtonText}>
+          🤖 Ask Rahnuma AI
+        </Text>
+      </Pressable>
+
     </View>
 
-    <Image
-      source={require("../../../assets/images/founder.png")}
-      style={styles.founderImage}
-    />
+ 
   </View>
 </View>
-
-<View style={styles.statsWrap}>
-  <View style={styles.statCard}>
-    <Text style={styles.statNumber}>5000+</Text>
-    <Text style={styles.statLabel}>Admissions</Text>
-  </View>
-
-  <View style={styles.statCard}>
-    <Text style={styles.statNumber}>2000+</Text>
-    <Text style={styles.statLabel}>Jobs</Text>
-  </View>
-
-  <View style={styles.statCard}>
-    <Text style={styles.statNumber}>1000+</Text>
-    <Text style={styles.statLabel}>Books</Text>
-  </View>
-
-  <View style={styles.statCard}>
-    <Text style={styles.statNumber}>24/7</Text>
-    <Text style={styles.statLabel}>Updates</Text>
-  </View>
-</View>
-
           {/* Search */}
           <View style={styles.searchWrap}>
             <View style={styles.searchBox}>
@@ -913,7 +912,7 @@ const styles = StyleSheet.create({
   empty: { textAlign: "center", marginTop: 50, color: COLORS.textSoft },
 
   header: {
-    backgroundColor: COLORS.primary,
+   backgroundColor: "#061A36",
     paddingTop: 52,
     paddingBottom: 18,
     paddingHorizontal: 20,
@@ -1389,10 +1388,10 @@ deadlineOpen: {
 
 heroBanner: {
   marginHorizontal: 16,
-  marginTop: 12,
+  marginTop: 10,
   borderRadius: 24,
   backgroundColor: "#061A36",
-  padding: 22,
+  padding: 16,
   borderWidth: 1,
   borderColor: "#D4A032",
   elevation: 8,
@@ -1407,6 +1406,7 @@ heroSmall: {
   color: "#ffffff",
   fontSize: 18,
   fontWeight: "600",
+  textAlign: "center",
 },
 
 heroBig: {
@@ -1414,12 +1414,14 @@ heroBig: {
   fontSize: 32,
   fontWeight: "800",
   marginTop: 4,
+  textAlign: "center",
 },
 
 heroDesc: {
   color: "#ffffffcc",
   fontSize: 13,
   marginTop: 4,
+  textAlign: "center",
 },
 statsWrap: {
   flexDirection: "row",
@@ -1453,6 +1455,65 @@ statLabel: {
   fontWeight: "700",
   color: "#64748B",
 },
+
+heroBadge: {
+  alignSelf: "flex-start",
+  backgroundColor: "rgba(212,160,50,0.15)",
+  borderColor: "#D4A032",
+  borderWidth: 1,
+  borderRadius: 20,
+  paddingHorizontal: 10,
+  paddingVertical: 5,
+  marginBottom: 14,
+},
+
+heroBadgeText: {
+  color: "#D4A032",
+  fontSize: 11,
+  fontWeight: "800",
+},
+
+heroTitle: {
+  color: "#fff",
+  fontSize: 25,
+  fontWeight: "900",
+  lineHeight: 31,
+},
+
+heroHighlight: {
+  color: "#D4A032",
+  textAlign: "center",
+},
+
+heroSub: {
+  color: "#ffffffcc",
+  marginTop: 8,
+  fontSize: 13,
+  lineHeight: 20,
+},
+
+heroTagline: {
+  color: "#D4A032",
+  fontSize: 15,
+  fontWeight: "900",
+  marginTop: 10,
+},
+
+heroButton: {
+  marginTop: 14,
+  backgroundColor: "#D4A032",
+  paddingHorizontal: 16,
+  paddingVertical: 10,
+  borderRadius: 14,
+  alignSelf: "flex-start",
+},
+
+heroButtonText: {
+  color: "#061A36",
+  fontWeight: "900",
+  fontSize: 13,
+},
+
 founderImage: {
   width: 120,
   height: 120,
