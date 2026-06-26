@@ -1,4 +1,3 @@
-import { GoogleGenAI } from "@google/genai";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import {
@@ -16,10 +15,8 @@ import {
   View,
 } from "react-native";
 
-const GEMINI_API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY!;
 const CHAT_KEY = "RAHNUMA_AI_CHATS";
 
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 const DEFAULT_CHAT = [
   {
@@ -177,48 +174,26 @@ export default function AiScreen() {
     });
   };
 
-  const getGeminiReply = async (userText: string) => {
-    const websiteData = await searchWebsitePosts(userText);
+ const getGeminiReply = async (userText: string) => {
+  const response = await fetch(
+    "https://www.educationinkarachi.net/wp-json/rahnuma/v1/ai",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: userText }),
+    }
+  );
 
-    const prompt = `
-You are Rahnuma AI by Education in Karachi.
-Your goal is helping Pakistani students.
-Answer in simple Roman Urdu unless user asks in English.
+  const data = await response.json();
 
-Help with:
-- Admissions
-- Universities
-- Scholarships
-- MDCAT
-- ECAT
-- Careers
-- Jobs
-- Study Guidance
-- Past Papers
-- Calculators
+  if (!response.ok || !data?.success) {
+    throw new Error(data?.reply || "AI request failed");
+  }
 
-Rules:
-- Use the website data below if relevant.
-- If the user asks about admissions generally, check the latest admissions posts first.
-- Do not invent deadlines or fees.
-- Give short, practical and clear answers.
-- Always include relevant website links when available.
-- If website data is not enough, clearly say to check EducationInKarachi.net.
-
-Relevant posts from EducationInKarachi.net:
-${websiteData}
-
-User question:
-${userText}
-`;
-
-    const response = await ai.models.generateContent({
-     model: "gemini-2.5-flash",
-      contents: prompt,
-    });
-
-    return response.text || "Sorry, mujhe jawab generate karne me issue aa gaya.";
-  };
+  return data.reply || "Sorry, mujhe jawab generate karne me issue aa gaya.";
+};
 
   const sendMessage = async (custom?: string) => {
     const rawText = custom || message;
