@@ -9,36 +9,31 @@ import { COLORS } from "../../theme";
 const API = "https://educationinkarachi.net/wp-json/wp/v2";
 // Tools (WebView/page wale) - tap par route khule
 const TOOLS = [
-  { key: "admissions-open", name: "Admissions", desc: "Find admissions", icon: "🎓", color: "#061A36" },
-
-  { key: "results", name: "Results", desc: "Check results", icon: "📊", color: "#061A36" },
-
-  { key: "scholarships", name: "Scholarships", desc: "Financial aid", icon: "🎁", color: "#061A36" },
-
-  { key: "mdcat", name: "MDCAT / ECAT", desc: "Preparation", icon: "📚", color: "#061A36" },
-
-  { key: "pastpapers", name: "Past Papers", desc: "Solved papers", icon: "📝", color: "#061A36" },
-
-  { key: "jobs", name: "Jobs", desc: "Career opportunities", icon: "💼", color: "#061A36" },
+  { categoryId: 154, name: "Admissions", desc: "Find admissions", icon: "🎓", color: "#061A36" },
+  { categoryId: 806, name: "Results", desc: "Check results", icon: "📊", color: "#061A36" },
+  { categoryId: 155, name: "Scholarships", desc: "Financial aid", icon: "🎁", color: "#061A36" },
+  { categoryId: 171, name: "MDCAT / ECAT", desc: "Preparation", icon: "📚", color: "#061A36" },
+  { categoryId: 2514, name: "Past Papers", desc: "Solved papers", icon: "📝", color: "#061A36" },
+  { categoryId: 1274, name: "Jobs", desc: "Career opportunities", icon: "💼", color: "#061A36" },
 ];
 
 // Categories (posts wale) - tap par us category ki posts
 const CATEGORIES = [
-  { id: 36, name: "News", desc: "Latest news", icon: "📰", color: "#2563EB" },
-  { id: 154, name: "Admissions", desc: "Admission updates", icon: "🏫", color: "#0891B2" },
-  { id: 1274, name: "Jobs", desc: "Latest jobs", icon: "💼", color: "#16A34A" },
-  { id: 806, name: "Results", desc: "Exam results", icon: "📊", color: "#7C3AED" },
-  { id: 1732, name: "Guess Papers", desc: "Important guesses", icon: "📝", color: "#F97316" },
-  { id: 1730, name: "Date Sheets", desc: "Exam schedule", icon: "📅", color: "#7C3AED" },
-  { id: 1522, name: "Forms", desc: "Form updates", icon: "📋", color: "#F97316" },
-  { id: 171, name: "MDCAT", desc: "Medical entry test", icon: "🩺", color: "#2563EB" },
-  { id: 155, name: "Scholarships", desc: "Funding chances", icon: "🎁", color: "#16A34A" },
-  { id: 1356, name: "Trending", desc: "Hot topics", icon: "🔥", color: "#F97316" },
-  { id: 621, name: "Uni Ranking", desc: "Top universities", icon: "🏆", color: "#7C3AED" },
-  { id: 2514, name: "Past Papers", desc: "Solved papers", icon: "📚", color: "#0891B2" },
-  { id: 2564, name: "Practice Tests", desc: "MCQ quizzes", icon: "✅", color: "#16A34A" },
-  { id: 2595, name: "Calculators", desc: "Useful tools", icon: "🧮", color: "#7C3AED" },
-  { id: 2597, name: "PDF Books", desc: "Free books", icon: "📖", color: "#DC2626" },
+  { id: 36, name: "News", desc: "Latest news", icon: "📰", color: "#061A36" },
+  { id: 154, name: "Admissions", desc: "Admission updates", icon: "🏫", color: "#061A36" },
+  { id: 1274, name: "Jobs", desc: "Latest jobs", icon: "💼", color: "#061A36" },
+  { id: 806, name: "Results", desc: "Exam results", icon: "📊", color: "#061A36" },
+  { id: 1732, name: "Guess Papers", desc: "Important guesses", icon: "📝", color: "#061A36" },
+  { id: 1730, name: "Date Sheets", desc: "Exam schedule", icon: "📅", color: "#061A36" },
+  { id: 1522, name: "Forms", desc: "Form updates", icon: "📋", color: "#061A36" },
+  { id: 171, name: "MDCAT", desc: "Medical entry test", icon: "🩺", color: "#061A36"},
+  { id: 155, name: "Scholarships", desc: "Funding chances", icon: "🎁", color: "#061A36" },
+  { id: 1356, name: "Trending", desc: "Hot topics", icon: "🔥", color: "#061A36" },
+  { id: 621, name: "Uni Ranking", desc: "Top universities", icon: "🏆", color: "#061A36" },
+  { id: 2514, name: "Past Papers", desc: "Solved papers", icon: "📚", color: "#061A36" },
+  { id: 2564, name: "Practice Tests", desc: "MCQ quizzes", icon: "✅", color: "#061A36"},
+  { id: 2595, name: "Calculators", desc: "Useful tools", icon: "🧮", color: "#061A36" },
+  { id: 2597, name: "PDF Books", desc: "Free books", icon: "📖", color: "#061A36" },
 ];
 
 const SUBCATEGORIES = {
@@ -634,21 +629,29 @@ const cities = [
     onClose={() => setDrawerOpen(false)}
   />
 
-  <View style={styles.header}>
-    <View style={styles.headerTextWrap}>
-      <Text style={styles.headerTitle}>Rahnuma</Text>
-      <Text style={styles.headerSub}>
-        Your Guide to Education & Careers
-      </Text>
-    </View>
-<Pressable
-  onPress={() => setDrawerOpen(true)}
-  style={styles.infoBtn}
-  hitSlop={10}
->
-  <Text style={styles.infoIcon}>☰</Text>
-</Pressable>
+<View style={styles.header}>
+  <Pressable
+    onPress={() => setDrawerOpen(true)}
+    style={styles.infoBtn}
+    hitSlop={10}
+  >
+    <Text style={styles.infoIcon}>☰</Text>
+  </Pressable>
 
+  <View style={[styles.headerTextWrap, { alignItems: "center" }]}>
+    <Text style={styles.headerTitle}>Rahnuma</Text>
+    <Text style={styles.headerSub}>
+      Your Guide to Education & Careers
+    </Text>
+  </View>
+
+  <Pressable
+    onPress={() => router.push("/notifications")}
+    style={styles.infoBtn}
+    hitSlop={10}
+  >
+    <Text style={styles.infoIcon}>🔔</Text>
+  </Pressable>
 </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -689,6 +692,33 @@ const cities = [
  
   </View>
 </View>
+
+<View style={styles.highlightsRow}>
+  <View style={styles.highlightCard}>
+    <Text style={styles.highlightIcon}>🎓</Text>
+  <Text style={styles.statNumber}>{stats.admissions.toLocaleString()}+</Text>
+    <Text style={styles.highlightLabel}>Admissions</Text>
+  </View>
+
+  <View style={styles.highlightCard}>
+    <Text style={styles.highlightIcon}>💼</Text>
+   <Text style={styles.statNumber}>{stats.jobs.toLocaleString()}+</Text>
+    <Text style={styles.highlightLabel}>Jobs</Text>
+  </View>
+
+  <View style={styles.highlightCard}>
+    <Text style={styles.highlightIcon}>🏆</Text>
+<Text style={styles.statNumber}>{stats.scholarships.toLocaleString()}+</Text>
+<Text style={styles.statLabel}>Scholarships</Text>
+  </View>
+
+  <View style={styles.highlightCard}>
+    <Text style={styles.highlightIcon}>📰</Text>
+ <Text style={styles.statNumber}>{stats.news.toLocaleString()}+</Text>
+<Text style={styles.statLabel}>News</Text>
+  </View>
+</View>
+
           {/* Search */}
           <View style={styles.searchWrap}>
             <View style={styles.searchBox}>
@@ -709,7 +739,7 @@ const cities = [
        <Text style={styles.sectionTitle}>Quick Access</Text>
           <View style={styles.grid}>
             {TOOLS.map((t) => (
-              <Pressable key={t.key} style={[styles.card, { backgroundColor: t.color }]} android_ripple={{ color: "#ffffff20" }} onPress={() => router.push(`/${t.key}`)}>
+              <Pressable key={t.key} style={[styles.card, { backgroundColor: t.color }]} android_ripple={{ color: "#ffffff20" }} onPress={() => openCategory(t.categoryId)}>
                 <Text style={styles.cardIcon}>{t.icon}</Text>
                 <Text style={styles.cardName}>{t.name}</Text>
                 <Text style={styles.cardDesc}>{t.desc}</Text>
@@ -812,17 +842,26 @@ const cities = [
 />
      
 <View style={styles.aiBox}>
-  <Text style={styles.aiTitle}>🤖 Ask Rahnuma AI</Text>
+  <View style={styles.aiTopRow}>
+    <View style={styles.aiIconCircle}>
+      <Text style={styles.aiIcon}>🤖</Text>
+    </View>
+
+    <View style={{ flex: 1 }}>
+      <Text style={styles.aiTitle}>Rahnuma AI Assistant</Text>
+      <Text style={styles.aiSubtitle}>Admissions • Careers • Study Help</Text>
+    </View>
+  </View>
 
   <Text style={styles.aiText}>
-    Get career guidance, admissions help, university suggestions and study advice.
+    Ask about admissions, universities, eligibility, scholarships, jobs and career guidance.
   </Text>
 
   <Pressable
     style={styles.aiButton}
     onPress={() => router.push("/ai")}
   >
-    <Text style={styles.aiButtonText}>Launch AI Assistant</Text>
+    <Text style={styles.aiButtonText}>Launch AI Assistant →</Text>
   </Pressable>
 </View>
           {/* Categories */}
@@ -1513,7 +1552,106 @@ heroButtonText: {
   fontWeight: "900",
   fontSize: 13,
 },
+aiBox: {
+  backgroundColor: "#061A36",
+  marginHorizontal: 16,
+  marginTop: 22,
+  borderRadius: 22,
+  padding: 18,
+  borderWidth: 1,
+  borderColor: "#D4A032",
+  elevation: 4,
+},
 
+aiTopRow: {
+  flexDirection: "row",
+  alignItems: "center",
+},
+
+aiIconCircle: {
+  width: 52,
+  height: 52,
+  borderRadius: 26,
+  backgroundColor: "rgba(212,160,50,0.15)",
+  alignItems: "center",
+  justifyContent: "center",
+  marginRight: 12,
+  borderWidth: 1,
+  borderColor: "#D4A032",
+},
+
+aiIcon: {
+  fontSize: 26,
+},
+
+aiTitle: {
+  color: "#fff",
+  fontSize: 18,
+  fontWeight: "900",
+},
+
+aiSubtitle: {
+  color: "#D4A032",
+  fontSize: 12,
+  fontWeight: "800",
+  marginTop: 3,
+},
+
+aiText: {
+  color: "#ffffffcc",
+  fontSize: 14,
+  lineHeight: 22,
+  marginTop: 14,
+},
+
+aiButton: {
+  marginTop: 16,
+  backgroundColor: "#D4A032",
+  paddingVertical: 13,
+  borderRadius: 14,
+  alignItems: "center",
+},
+
+aiButtonText: {
+  color: "#061A36",
+  fontWeight: "900",
+  fontSize: 14,
+},
+
+highlightsRow: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  marginHorizontal: 16,
+  marginTop: 18,
+},
+
+highlightCard: {
+  flex: 1,
+  backgroundColor: "#fff",
+  borderRadius: 16,
+  paddingVertical: 14,
+  marginHorizontal: 4,
+  alignItems: "center",
+  elevation: 3,
+},
+
+highlightIcon: {
+  fontSize: 22,
+},
+
+highlightNumber: {
+  marginTop: 6,
+  fontSize: 18,
+  fontWeight: "900",
+  color: "#061A36",
+},
+
+highlightLabel: {
+  marginTop: 2,
+  fontSize: 11,
+  color: "#666",
+  fontWeight: "700",
+},
 founderImage: {
   width: 120,
   height: 120,

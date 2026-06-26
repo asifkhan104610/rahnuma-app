@@ -105,14 +105,12 @@ export default function PostDetail() {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body {
-    margin: 0;
-    padding: 18px;
-    font-family: Arial, sans-serif;
-    background: #F8FAFC;
-    color: #0F172A;
-    line-height: 1.7;
-  }
+ body{
+  margin:0;
+  padding:16px;
+  max-width:100%;
+  overflow-x:hidden;
+}
   .title {
     font-size: 25px;
     font-weight: 800;
@@ -124,27 +122,31 @@ export default function PostDetail() {
     font-size: 14px;
     margin-bottom: 16px;
   }
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-    border-radius: 12px;
-  }
-  p, li { font-size: 16px; }
-  h1, h2, h3 { line-height: 1.35; }
+ img{
+    max-width:100%;
+    border-radius:14px;
+    margin:18px 0;
+}
+  p,
+li{
+    font-size:17px;
+    line-height:1.8;
+}
+ h1,h2,h3,h4{
+    color:#0F172A;
+    font-weight:800;
+    margin-top:22px;
+}
   a {
     color: #1E3A8A;
     font-weight: 700;
     text-decoration: none;
   }
-  table {
-    width: 100% !important;
-    border-collapse: collapse;
-    margin: 14px 0;
-    background: #fff;
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
+ table{
+    display:block;
+    overflow-x:auto;
+    border-radius:12px;
+}
   th, td {
     border: 1px solid #E2E8F0;
     padding: 10px;
@@ -174,7 +176,9 @@ export default function PostDetail() {
           <Text style={styles.iconText}>←</Text>
         </Pressable>
 
-        <Text style={styles.topTitle} numberOfLines={1}>Post</Text>
+       <Text style={styles.topTitle} numberOfLines={1}>
+  {cleanTitle(post.title.rendered)}
+</Text>
 
         <Pressable onPress={toggleBookmark} style={styles.iconBtn}>
           <Text style={styles.iconText}>{saved ? "★" : "☆"}</Text>
@@ -189,17 +193,29 @@ export default function PostDetail() {
         </Pressable>
       </View>
 
-      <WebView
-        originWhitelist={["*"]}
-        source={{ html, baseUrl: "https://educationinkarachi.net" }}
-        style={styles.webview}
-        startInLoadingState
-        renderLoading={() => (
-          <View style={styles.webLoader}>
-            <ActivityIndicator size="large" color={COLORS.primary} />
-          </View>
-        )}
-      />
+    <WebView
+  originWhitelist={["*"]}
+  source={{ html, baseUrl: "https://educationinkarachi.net" }}
+  style={styles.webview}
+
+  startInLoadingState
+
+  scalesPageToFit={false}
+
+  setBuiltInZoomControls={false}
+
+  showsHorizontalScrollIndicator={false}
+
+  javaScriptEnabled
+
+  domStorageEnabled
+
+  renderLoading={() => (
+    <View style={styles.webLoader}>
+      <ActivityIndicator size="large" color={COLORS.primary} />
+    </View>
+  )}
+/>
     </View>
   );
 }
@@ -221,14 +237,14 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
 
-  topBar: {
-    backgroundColor: "#061A36",
-    paddingTop: 44,
-    paddingBottom: 12,
-    paddingHorizontal: 10,
-    flexDirection: "row",
-    alignItems: "center",
-  },
+topBar: {
+  backgroundColor: "#061A36",
+  paddingTop: 42,
+  paddingBottom: 10,
+  paddingHorizontal: 10,
+  flexDirection: "row",
+  alignItems: "center",
+},
 
   iconBtn: {
     width: 36,
@@ -262,11 +278,11 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
 
-  browserText: {
-    color: "#061A36",
-    fontWeight: "900",
-    fontSize: 12,
-  },
+browserText: {
+  color: "#061A36",
+  fontWeight: "900",
+  fontSize: 12,
+},
 
   webLoader: {
     position: "absolute",

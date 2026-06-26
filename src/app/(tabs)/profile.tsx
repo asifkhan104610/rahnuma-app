@@ -89,7 +89,7 @@ export default function ProfileScreen() {
           style={styles.photo}
         />
 
-        <Text style={styles.name}>Muhammad Asif Khan</Text>
+        <Text style={styles.name}>Asif Khan</Text>
         <Text style={styles.role}>Founder - Rahnuma</Text>
         <Text style={styles.tagline}>Your Guide to Education & Careers</Text>
       </View>

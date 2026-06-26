@@ -49,7 +49,12 @@ export default function AppDrawer({ visible, onClose }: Props) {
 
         <View style={styles.drawer}>
           <View style={styles.header}>
-
+<Pressable
+  onPress={onClose}
+  style={styles.closeBtn}
+>
+  <Ionicons name="close" size={24} color="#fff" />
+</Pressable>
   <Image
     source={require("../../assets/images/founder.png")}
     style={styles.profileImage}
@@ -73,7 +78,10 @@ export default function AppDrawer({ visible, onClose }: Props) {
             {items.map((item) => (
               <Pressable
                 key={item.label}
-                style={styles.item}
+                style={[
+  styles.item,
+  item.label === "Home" && styles.activeItem,
+]}
                 onPress={() => go(item.path)}
               >
                 <Ionicons name={item.icon as any} size={22} color="#061A36" />
@@ -87,7 +95,9 @@ export default function AppDrawer({ visible, onClose }: Props) {
             </Pressable>
           </ScrollView>
 
-          <Text style={styles.footer}>Made with ❤️ in Pakistan</Text>
+          <Text style={styles.footer}>Rahnuma v1.5
+
+© Education in Karachi</Text>
         </View>
       </View>
     </Modal>
@@ -185,7 +195,17 @@ tagline: {
   textAlign: "center",
   fontSize: 13,
 },
-
+closeBtn: {
+  position: "absolute",
+  top: 50,
+  right: 18,
+  zIndex: 100,
+},
+activeItem: {
+  backgroundColor: "#F7F1E3",
+  borderLeftWidth: 5,
+  borderLeftColor: "#D4A032",
+},
   footer: {
     textAlign: "center",
     color: "#64748B",
