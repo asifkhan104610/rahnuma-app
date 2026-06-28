@@ -55,7 +55,10 @@ export default function RootLayout() {
         <Stack.Screen name="[id]" options={{ headerShown: false }} />
         <Stack.Screen name="about" options={{ title: "About" }} />
         <Stack.Screen name="settings" options={{ title: "Settings" }} />
-        <Stack.Screen name="ai" options={{ title: "Rahnuma AI" }} />
+      <Stack.Screen
+  name="ai"
+  options={{ title: "Education AI" }}
+/>
         <Stack.Screen name="cvbuilder" options={{ title: "CV Builder" }} />
         <Stack.Screen name="program-finder" options={{ title: "Program Finder" }} />
         <Stack.Screen name="institute-finder" options={{ title: "Institute Finder" }} />
@@ -77,7 +80,7 @@ export default function RootLayout() {
               resizeMode="contain"
             />
 
-            <Text style={styles.title}>Rahnuma</Text>
+            <Text style={styles.title}>Education in Pakistan</Text>
             <Text style={styles.tagline}>Your Guide to Education & Careers</Text>
             <Text style={styles.goldText}>We Guide | You Grow</Text>
           </Animated.View>

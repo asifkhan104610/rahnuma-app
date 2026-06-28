@@ -19,7 +19,7 @@ export default function SettingsScreen() {
 
       <View style={styles.header}>
         <Text style={styles.title}>Settings</Text>
-        <Text style={styles.sub}>Manage Rahnuma app options</Text>
+        <Text style={styles.sub}>Manage Education in Pakistan app options</Text>
       </View>
 
       <View style={styles.card}>
@@ -35,7 +35,7 @@ export default function SettingsScreen() {
           <Text style={styles.badge}>Soon</Text>
         </Pressable>
 
-        <Pressable style={styles.row} onPress={() => alert("Rahnuma App v1.1")}>
+        <Pressable style={styles.row} onPress={() => alert("Education in Pakistan App v1.1")}>
           <Text style={styles.rowText}>📱 App Version</Text>
           <Text style={styles.value}>1.1</Text>
         </Pressable>
@@ -84,7 +84,7 @@ export default function SettingsScreen() {
         </Pressable>
       </View>
 
-      <Text style={styles.footer}>© 2026 Rahnuma | Education in Karachi</Text>
+      <Text style={styles.footer}>© 2026 Education in Pakistan | Education in Karachi</Text>
     </ScrollView>
   );
 }

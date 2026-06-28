@@ -1,16 +1,16 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
-    ActivityIndicator,
-    FlatList,
-    Image,
-    Pressable,
-    ScrollView,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    View,
+  ActivityIndicator,
+  FlatList,
+  Image,
+  Pressable,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS } from "../../theme";
@@ -142,7 +142,7 @@ export default function SearchScreen() {
           </View>
 
           <View style={styles.aiBox}>
-            <Text style={styles.aiTitle}>🤖 Ask Rahnuma AI</Text>
+            <Text style={styles.aiTitle}>🤖 Ask Education AI</Text>
             <Text style={styles.aiText}>
               Coming soon: career guidance, program suggestions and admission help.
             </Text>

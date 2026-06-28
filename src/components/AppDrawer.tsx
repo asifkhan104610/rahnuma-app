@@ -1,14 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import {
-    Image,
-    Linking,
-    Modal,
-    Pressable,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
+  Image,
+  Linking,
+  Modal,
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from "react-native";
 
 type Props = {
@@ -36,7 +36,7 @@ export default function AppDrawer({ visible, onClose }: Props) {
     { icon: "grid-outline", label: "Categories", path: "/search" },
     { icon: "download-outline", label: "Downloads", path: "/downloads" },
     { icon: "bookmark-outline", label: "Saved Posts", path: "/bookmarks" },
-    { icon: "sparkles-outline", label: "Rahnuma AI", path: "/ai" },
+    { icon: "sparkles-outline", label: "Education AI", path: "/ai" },
     { icon: "person-outline", label: "Profile", path: "/profile" },
     { icon: "settings-outline", label: "Settings", path: "/settings" },
     { icon: "information-circle-outline", label: "About", path: "/about" },
@@ -65,7 +65,7 @@ export default function AppDrawer({ visible, onClose }: Props) {
   </Text>
 
   <Text style={styles.role}>
-    Founder - Rahnuma
+   Founder • Education in Pakistan
   </Text>
 
   <Text style={styles.tagline}>
@@ -95,7 +95,7 @@ export default function AppDrawer({ visible, onClose }: Props) {
             </Pressable>
           </ScrollView>
 
-          <Text style={styles.footer}>Rahnuma v1.5
+          <Text style={styles.footer}>Education in Pakistan v1.5
 
 © Education in Karachi</Text>
         </View>

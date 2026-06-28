@@ -15,14 +15,14 @@ import {
   View,
 } from "react-native";
 
-const CHAT_KEY = "RAHNUMA_AI_CHATS";
+const CHAT_KEY = "Education in Pakistan_AI_CHATS";
 
 
 const DEFAULT_CHAT = [
   {
     id: "1",
     role: "ai",
-    text: "Assalam o Alaikum! I am Rahnuma AI. Ask me about admissions, jobs, scholarships, MDCAT, ECAT, universities or career guidance.",
+    text: "Assalam o Alaikum! I am Education AI. Ask me about admissions, jobs, scholarships, MDCAT, ECAT, universities or career guidance.",
   },
 ];
 
@@ -165,18 +165,18 @@ export default function AiScreen() {
       .map((item) =>
         item.role === "user"
           ? `User: ${item.text}`
-          : `Rahnuma AI: ${item.text}`
+          : `Education AI: ${item.text}`
       )
       .join("\n\n");
 
     await Share.share({
-      message: `Rahnuma AI Conversation\n\n${text}`,
+      message: `Education AI Conversation\n\n${text}`,
     });
   };
 
  const getGeminiReply = async (userText: string) => {
   const response = await fetch(
-    "https://www.educationinkarachi.net/wp-json/rahnuma/v1/ai",
+    "https://www.educationinkarachi.net/wp-json/Education in Pakistan/v1/ai",
     {
       method: "POST",
       headers: {
@@ -254,7 +254,7 @@ export default function AiScreen() {
 
       <View style={styles.header}>
         <View style={{ flex: 1 }}>
-          <Text style={styles.title}>🤖 Rahnuma AI</Text>
+          <Text style={styles.title}>🤖 Education AI</Text>
           <Text style={styles.sub}>Education & Career Assistant</Text>
         </View>
 
@@ -310,7 +310,7 @@ export default function AiScreen() {
       <View style={styles.inputWrap}>
         <TextInput
           style={styles.input}
-          placeholder="Ask Rahnuma..."
+          placeholder="Ask Education in Pakistan..."
           placeholderTextColor="#94A3B8"
           value={message}
           onChangeText={setMessage}

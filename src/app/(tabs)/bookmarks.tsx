@@ -2,14 +2,14 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect, useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import {
-    FlatList,
-    Pressable,
-    StyleSheet,
-    Text,
-    View
+  FlatList,
+  Pressable,
+  StyleSheet,
+  Text,
+  View
 } from "react-native";
 
-const BOOKMARK_KEY = "RAHNUMA_BOOKMARKS";
+const BOOKMARK_KEY = "Education in Pakistan_BOOKMARKS";
 
 export default function BookmarksScreen() {
   const router = useRouter();

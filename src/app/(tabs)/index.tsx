@@ -639,19 +639,19 @@ const cities = [
   </Pressable>
 
   <View style={[styles.headerTextWrap, { alignItems: "center" }]}>
-    <Text style={styles.headerTitle}>Rahnuma</Text>
+    <Text style={styles.headerTitle}>Education in Pakistan</Text>
     <Text style={styles.headerSub}>
       Your Guide to Education & Careers
     </Text>
   </View>
 
   <Pressable
-    onPress={() => router.push("/notifications")}
-    style={styles.infoBtn}
-    hitSlop={10}
-  >
-    <Text style={styles.infoIcon}>🔔</Text>
-  </Pressable>
+  onPress={() => router.push("/notifications")}
+  style={styles.infoBtn}
+  hitSlop={10}
+>
+  <Text style={styles.infoIcon}>🔔</Text>
+</Pressable>
 </View>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -667,7 +667,7 @@ const cities = [
 
       <Text style={styles.heroTitle}>
         Welcome to{"\n"}
-        <Text style={styles.heroHighlight}>Rahnuma</Text>
+        <Text style={styles.heroHighlight}>Education in Pakistan</Text>
       </Text>
 
       <Text style={styles.heroSub}>
@@ -683,7 +683,7 @@ const cities = [
         onPress={() => router.push("/ai")}
       >
         <Text style={styles.heroButtonText}>
-          🤖 Ask Rahnuma AI
+          🤖 Ask Education AI
         </Text>
       </Pressable>
 
@@ -848,7 +848,7 @@ const cities = [
     </View>
 
     <View style={{ flex: 1 }}>
-      <Text style={styles.aiTitle}>Rahnuma AI Assistant</Text>
+      <Text style={styles.aiTitle}>Education AI Assistant</Text>
       <Text style={styles.aiSubtitle}>Admissions • Careers • Study Help</Text>
     </View>
   </View>
@@ -966,11 +966,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
   },
   headerTextWrap: { flex: 1 },
-  headerTitle: {
-  fontSize: 26,
+headerTitle: {
+  fontSize: 20,
   fontWeight: "800",
   color: "#fff",
-  letterSpacing: 0.3,
 },
  headerSub: {
   fontSize: 13,

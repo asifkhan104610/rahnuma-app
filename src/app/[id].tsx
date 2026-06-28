@@ -14,7 +14,7 @@ import {
 import { WebView } from "react-native-webview";
 import { COLORS } from "../theme";
 
-const BOOKMARK_KEY = "RAHNUMA_BOOKMARKS";
+const BOOKMARK_KEY = "Education in Pakistan_BOOKMARKS";
 
 function cleanTitle(html = "") {
   return html.replace(/&amp;/g, "&").replace(/&#8217;/g, "'").replace(/<[^>]+>/g, "");

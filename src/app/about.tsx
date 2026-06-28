@@ -1,12 +1,12 @@
 import {
-  Image,
-  Linking,
-  Pressable,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  View,
+    Image,
+    Linking,
+    Pressable,
+    ScrollView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    View,
 } from "react-native";
 import { COLORS } from "../theme";
 
@@ -34,14 +34,14 @@ export default function AboutScreen() {
         />
 
         <Text style={styles.name}>Asif Khan</Text>
-        <Text style={styles.role}>Founder - Rahnuma</Text>
+        <Text style={styles.role}>Founder - Education in Pakistan</Text>
         <Text style={styles.tagline}>Your Guide to Education & Careers</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.heading}>About Rahnuma</Text>
+        <Text style={styles.heading}>About Education in Pakistan</Text>
         <Text style={styles.para}>
-          Rahnuma is an education and career guidance platform designed to help
+          Education in Pakistan is an education and career guidance platform designed to help
           students find authentic updates about admissions, results, jobs,
           scholarships, past papers, books and entry test preparation.
         </Text>
@@ -88,7 +88,7 @@ export default function AboutScreen() {
         </Pressable>
       </View>
 
-      <Text style={styles.footer}>© 2026 Rahnuma | Education in Karachi</Text>
+      <Text style={styles.footer}>© 2026 Education in Pakistan | Education in Karachi</Text>
     </ScrollView>
   );
 }

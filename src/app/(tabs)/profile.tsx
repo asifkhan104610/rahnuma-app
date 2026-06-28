@@ -24,7 +24,7 @@ const LINKS = {
   terms: "https://www.educationinkarachi.net/terms-and-conditions/",
 };
 
-const AI_CHAT_KEY = "RAHNUMA_AI_CHATS";
+const AI_CHAT_KEY = "Education in Pakistan_AI_CHATS";
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -36,12 +36,12 @@ export default function ProfileScreen() {
   const shareApp = async () => {
     await Share.share({
       message:
-        "Download Rahnuma App for admissions, jobs, scholarships, past papers and career guidance:\n\nhttps://www.educationinkarachi.net",
+        "Download Education in Pakistan App for admissions, jobs, scholarships, past papers and career guidance:\n\nhttps://www.educationinkarachi.net",
     });
   };
 
   const clearAiChat = () => {
-    Alert.alert("Clear AI Chat", "Are you sure you want to clear Rahnuma AI chat history?", [
+    Alert.alert("Clear AI Chat", "Are you sure you want to clear Education AI chat history?", [
       { text: "Cancel", style: "cancel" },
       {
         text: "Clear",
@@ -90,19 +90,19 @@ export default function ProfileScreen() {
         />
 
         <Text style={styles.name}>Asif Khan</Text>
-        <Text style={styles.role}>Founder - Rahnuma</Text>
+        <Text style={styles.role}>Founder - Education in Pakistan</Text>
         <Text style={styles.tagline}>Your Guide to Education & Careers</Text>
       </View>
 
       <View style={styles.summaryCard}>
-        <Text style={styles.summaryTitle}>Welcome to Rahnuma</Text>
+        <Text style={styles.summaryTitle}>Welcome to Education in Pakistan</Text>
         <Text style={styles.summaryText}>
           Get authentic updates about admissions, jobs, results, scholarships,
           books, past papers and career guidance across Pakistan.
         </Text>
 
         <View style={styles.versionPill}>
-          <Text style={styles.versionPillText}>Rahnuma v1.4</Text>
+          <Text style={styles.versionPillText}>Education in Pakistan v1.4</Text>
         </View>
       </View>
 
@@ -133,14 +133,14 @@ export default function ProfileScreen() {
         <MenuItem
           icon="🤖"
           title="Clear AI Chat"
-          sub="Delete Rahnuma AI chat history"
+          sub="Delete Education AI chat history"
           onPress={clearAiChat}
         />
 
         <MenuItem
           icon="📤"
           title="Share App"
-          sub="Invite students to use Rahnuma"
+          sub="Invite students to use Education in Pakistan"
           onPress={shareApp}
         />
 
@@ -210,7 +210,7 @@ export default function ProfileScreen() {
 
         <MenuItem
           icon="ℹ️"
-          title="About Rahnuma"
+          title="About Education in Pakistan"
           sub="Learn more about the app"
           onPress={() => router.push("/about")}
         />
