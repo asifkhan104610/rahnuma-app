@@ -176,7 +176,7 @@ export default function AiScreen() {
 
  const getGeminiReply = async (userText: string) => {
   const response = await fetch(
-    "https://www.educationinkarachi.net/wp-json/Education in Pakistan/v1/ai",
+    "https://www.educationinkarachi.net/wp-json/rahnuma/v1/ai",
     {
       method: "POST",
       headers: {
@@ -188,9 +188,11 @@ export default function AiScreen() {
 
   const data = await response.json();
 
-  if (!response.ok || !data?.success) {
-    throw new Error(data?.reply || "AI request failed");
-  }
+ if (!response.ok) {
+  const err = await response.text();
+  console.log("Gemini API Error:", err);
+  throw new Error(err);
+}
 
   return data.reply || "Sorry, mujhe jawab generate karne me issue aa gaya.";
 };
